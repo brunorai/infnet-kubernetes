@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+  namespace: wp-projeto
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      #hostNetwork: true
+      containers:
+      - name: wordpress
+        image: wordpress:5.4-php7.2-apache
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - secretRef:
+            name: wp-db-secrets
+        - configMapRef:
+            name: wp-db-config
+        volumeMounts:
+        - name: wordpress-persistent-storage
+          mountPath: /var/www/html
+      volumes:
+      - name: wordpress-persistent-storage
+        persistentVolumeClaim:
+          claimName: wordpress-pvc
+
