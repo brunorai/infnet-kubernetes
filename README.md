@@ -35,7 +35,7 @@
 1. **Envie os arquivos YAML para o nó master**
 
     ```bash
-    scp -I id_rsa kube-files/* ec2-user@{IP-DO-NÓ-MASTER}:/home/ec2-user/
+    scp -i id_rsa kube-files/* ec2-user@{IP-DO-NÓ-MASTER}:/home/ec2-user/
     ```
 2. **Conecte-se ao nó master**
 
