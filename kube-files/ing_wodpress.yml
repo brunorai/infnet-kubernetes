@@ -5,7 +5,7 @@ metadata:
   namespace: wp-projeto
 spec:
   rules:
-  - host: wordpress.192.168.1.61.sslip.io
+  - host: wordpress.{IP_ADDR}.sslip.io
     http:
       paths:
       - path: /
